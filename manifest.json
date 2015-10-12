@@ -1,0 +1,29 @@
+﻿{
+	"manifest_version": 2,
+	"name": "HelpFill",
+	"version": "1.0",
+	"description": "Help you fill the form.",
+	"background": { "scripts": ["3rd/jquery-2.0.0.min.js", "background.js"] },
+	"homepage_url":"http://open.chrome.360.cn/extension_dev/permissions.html",
+	"icons":{
+		"16": "images/fill16.png",             
+		"48": "images/fill48.png",            
+		"128": "images/fill128.png" 
+	},
+	"browser_action": {
+		"default_icon": {
+			"19": "images/fill19.png",
+			"38": "images/fill38.png"
+		},
+		"default_title": "HelpFill",
+		"default_popup": "popup.html"
+	},
+	"options_page": "option.html",
+	"offline_enabled":true,
+	"permissions" : ["tabs","http://localhost/","notifications"],
+	"content_scripts":[{
+		"matches":["*://*/*"],
+		"js":["3rd/jquery-2.0.0.min.js","3rd/tooltip.js","content_script.js"],
+		"css":["3rd/tooltip.css"]
+	}]
+}

@@ -1,0 +1,91 @@
+﻿/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 设置默认字体 */
+body,
+button, input, select, textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/* 重置列表元素 */
+ul, ol { list-style: none; }
+
+/* 重置文本格式元素 */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+q:before, q:after { content: ''; }
+
+/* 重置表单元素 */
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: none; } /* img 搭车：让链接里的 img 无边框 */
+/* 注：optgroup 无法扶正 */
+button, input, select, textarea {
+    font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+}
+
+/* 重置表格元素 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* 重置 hr */
+hr {
+    border: none;
+    height: 1px;
+}
+
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
+html { overflow-y: scroll; }
+
+/*---------------------------------------------------------------------*/
+
+body{
+
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+
+}
+body {width: 520px;}
+#content{width: 500px;}
+#content h2{text-align: center;background-color: #5DAC81;padding: 2px;}
+#content ul{list-style: none;}
+#content ul li{height: 20px;}
+#content ul li.header span{display: inline-block;width: 100px;border-left:1px solid #000;; margin-left: -1px;text-align: center;border-bottom:1px solid #000;height: 20px;line-height: 20px;}
+#content ul li.header .weishuHeader {width: 63px;}
+#content ul li .validator{width: 100px;float: left;text-align: center;vertical-align: middle;height: 18px;}
+#content ul li .delete,#content ul li .generate{width: 50px;float: left;text-align: center;vertical-align: middle;height: 18px;}
+#content ul li .selector,#content ul li .match{width: 96px;float: left;height: 14px;}
+#content .weishu{width: 62px;float: left;height: 14px;text-align: center;}
+#content .fillWrap{text-align: center;margin-top: 20px;}
+#content .addWrap{text-align: center;margin-top: 10px;}
+#content .allGenerateWrap{text-align: center;margin-top: 30px;}
+#content .fill,#content .add,#content .allGenerate{width: 100px;height: 18px;}
+
+.weishu input.spinner{width: 20px;text-align: center;height:14px;display: inline-block;}
+.weishu span{display: inline-block;height: 16px;width: 16px;text-align: center;line-height: 16px;background-color: #E9E9E9;cursor: pointer;border: 1px solid #CBCBCB}
