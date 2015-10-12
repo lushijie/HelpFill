@@ -4,7 +4,7 @@
 	"version": "1.0",
 	"description": "Help you fill the form.",
 	"background": { "scripts": ["3rd/jquery-2.0.0.min.js", "background.js"] },
-	"homepage_url":"http://open.chrome.360.cn/extension_dev/permissions.html",
+	"homepage_url":"https://github.com/yoyo1218/HelpFill",
 	"icons":{
 		"16": "images/fill16.png",             
 		"48": "images/fill48.png",            
@@ -18,7 +18,7 @@
 		"default_title": "HelpFill",
 		"default_popup": "popup.html"
 	},
-	"options_page": "option.html",
+	//"options_page": "option.html",
 	"offline_enabled":true,
 	"permissions" : ["tabs","http://localhost/","notifications"],
 	"content_scripts":[{
