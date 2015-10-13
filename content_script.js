@@ -41,19 +41,23 @@ function fillSelect(){
 	}
 }
 
+function fillAction(){
+	$(function(){
+		fillSelect();//can be cover by below
+	});
+
+	var __fillDB__=JSON.parse(localStorage.__fillDB__);
+	for(var i=0;i<__fillDB__.length;i++){
+		$(__fillDB__[i].selector).val(__fillDB__[i].match);
+		$(__fillDB__[i].selector).css("outline","2px dotted #F00");//set outline
+		$(__fillDB__[i].selector).attr("ftitle",__fillDB__[i].selector);//set tooltip
+		$(__fillDB__[i].selector).tooltip({cssClass:"tooltip_caption"});//set tooltip style
+	}
+}
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 	if(request.action == "fill"){
-		$(function(){
-			fillSelect();//can be cover by below
-		});
-
-		var __fillDB__=JSON.parse(localStorage.__fillDB__);
-		for(var i=0;i<__fillDB__.length;i++){
-			$(__fillDB__[i].selector).val(__fillDB__[i].match);
-			$(__fillDB__[i].selector).css("outline","2px dotted #F00");//set outline
-			$(__fillDB__[i].selector).attr("ftitle",__fillDB__[i].selector);//set tooltip
-			$(__fillDB__[i].selector).tooltip({cssClass:"tooltip_caption"});//set tooltip style
-		}
+		fillAction();
 	};
 
 	if(request.action=="store"){
@@ -71,3 +75,12 @@ if(!localStorage.__fillDB__){
 }
 
 refreshPop();
+
+
+
+//shift+enter 
+$(document).keypress(function(e){
+	if (e.shiftKey && e.which==13) {
+		fillAction();
+	}
+})

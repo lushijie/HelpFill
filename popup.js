@@ -92,7 +92,7 @@ function fillTarget(matchTarget,validatorValue,weishu){
 }
 
 
-var firstli='<li class="header"><span>选择器</span><span>值</span><span>校验</span><span class="weishuHeader">位数</span><span>操作</span></li>';
+var firstli='<li class="header"><span>选择器</span><span>填充值</span><span>校验</span><span class="weishuHeader">位数</span><span>操作</span></li>';
 var itemli='<li class="listItem">'+
 		'<input class="selector" type="text" > '+
 		'<input class="match" type="text" placeholder="可手动修改">'+
@@ -129,10 +129,15 @@ function loadFillDB(){
 		$("#list li:last .spinner").val(data[j].spinner);
 		var validatorValue=$("#list li:last .validator").val();
 
+		$("#list li:last .match").attr("readonly","readonly");
+
 		if(validatorValue=="phone"||validatorValue=="custom"){
 			$("#list li:last .spinner").css("text-decoration","line-through");
 		}else{
 			$("#list li:last .spinner").css("text-decoration","none");
+		}
+		if(validatorValue=="custom"){
+			$("#list li:last .match").removeAttr("readonly");
 		}
 
 	}
@@ -198,7 +203,10 @@ document.addEventListener('DOMContentLoaded', function () {
 					var spinnerValue=parentTarget.find(".spinner").val();
 					parentTarget.find(".spinner").css("text-decoration","none");
 					fillTarget(matchTarget,validatorValue,spinnerValue);
-				};
+				}
+				if(parseInt(sourceValue)==1){
+					parentTarget.find(".spinner").css("text-decoration","none");
+				}
 			}
 		}
 
@@ -231,10 +239,20 @@ document.addEventListener('DOMContentLoaded', function () {
 			var matchTarget=parentTarget.find(".match");
 			var spinnerValue=parentTarget.find(".spinner").val();
 
+			matchTarget.attr("readonly","readonly");
+
 			parentTarget.find(".spinner").val(6);//default
 			parentTarget.find(".spinner").css("text-decoration","none");//default
 
-			(validatorValue=="custom")?parentTarget.find(".generate").hide():parentTarget.find(".generate").show();
+			//(validatorValue=="custom")?parentTarget.find(".generate").hide():parentTarget.find(".generate").show();
+
+			if(validatorValue=="custom"){
+				parentTarget.find(".generate").hide();
+				matchTarget.removeAttr("readonly");
+			}
+			else{
+				parentTarget.find(".generate").show()
+			}
 			if(validatorValue=="phone"){
 				parentTarget.find(".spinner").val(11);
 				spinnerValue=parentTarget.find(".spinner").val();
