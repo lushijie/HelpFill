@@ -18,9 +18,8 @@
 		"default_title": "HelpFill",
 		"default_popup": "popup.html"
 	},
-	//"options_page": "option.html",
 	"offline_enabled":true,
-	"permissions" : ["tabs","http://localhost/","notifications"],
+	"permissions" : ["tabs"],
 	"content_scripts":[{
 		"matches":["*://*/*"],
 		"js":["3rd/jquery-2.0.0.min.js","3rd/tooltip.js","content_script.js"],
